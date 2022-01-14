@@ -1,0 +1,5 @@
+{
+  "siteTitle": "nhsuk-frontend eleventy starter",
+  "siteUrl": "https://nhs.uk",
+  "pathPrefix": "/nhsuk-frontend-eleventy"
+}

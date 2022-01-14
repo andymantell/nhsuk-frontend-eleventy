@@ -1,0 +1,30 @@
+---
+---
+
+{% extends "./nhsuk-frontend.njk" %}
+
+{% from 'header/macro.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'skip-link/macro.njk' import skipLink %}
+
+{% block header %}
+  {{ skipLink({
+    "href": "#maincontent",
+    "text": "Skip to main content"
+  }) }}
+
+  {{ header({
+    "homeHref": "/" | url
+  }) }}
+{% endblock %}
+
+{% block body %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="maincontent">
+      <h1>{{ title }}</h1>
+      {% block content %}{{ content | safe }}{% endblock %}
+    </main>
+  </div>
+{% endblock %}
+
+{% block footer %}{{ footer() }}{% endblock %}
