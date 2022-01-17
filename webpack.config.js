@@ -1,8 +1,6 @@
 const glob = require("glob");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 // Collect top level js and scss entrypoints
 const files = glob.sync(path.join("src/assets/{js,scss}/*.{js,scss}"));
@@ -110,19 +108,17 @@ const webpackConfig = {
           },
           {
             loader: "sass-loader",
+            options: {
+              sassOptions: {
+                quietDeps: true,
+              },
+            },
           },
         ],
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: "static",
-      reportFilename: "../../bundle-report.html",
-      openAnalyzer: false,
-    }),
-  ],
+  plugins: [new MiniCssExtractPlugin()],
 };
 
 module.exports = webpackConfig;
